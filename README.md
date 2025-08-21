@@ -4,13 +4,17 @@ Web Master Class
 This master class will teach you how to become proficient as a web developer, with the necessary disciplines that you need to understand along the way, so that you become a master yourself. To achieve this particular goal, there will be no hand holding: you'll be given some essential pointers, but it is your job to seek the knowledge yourself.
 
 ## Contents
-- Introduction
-- Terminal
-- Text Editor
-- Version Control System
-- Programming
-- Web Framework
-- Dynamic Pages
+- [Introduction](#introduction)
+- [Terminal](#terminal)
+  - [How to interact with your terminal](#how-to-interact-with-your-terminal)
+  - [Navigating directories](#navigating-directories)
+    - [A small intermission about manual pages](#a-small-intermission-about-manual-pages)
+  - [Playing around with files](#playing-around-with-files)
+- [Text Editor](#text-editor)
+- [Version Control System](#version-control-system)
+- [Programming](#programming)
+- [Web Framework](#web-framework)
+- [Dynamic Pages](#dynamic-pages)
 
 ## Introduction
 Welcome to this master class. I'm glad that you are here. By the end of this journey, you should have a good grasp of what it means to be a software engineer, or at least a competent web developer. Ok, in the very least, I wish you to become a self-sufficient power user. There are no prerequisites and knowledge seekers of all levels are welcome to learn a thing or two from this material.
@@ -80,13 +84,19 @@ And in case you are wondering, you probably guessed it right, you can read the m
 man man
 ```
 
-Coming back to what we were doing, now you can try changing your working directory to one of those directories that were listed before (the ones with a "d" file mode), for example, supposing one of the directories you see there is called "Downloads", you can do:
+Coming back to what we were doing, now you can try changing your working directory to one of those directories that were listed before (the ones with a "d" file mode). In case you don't have any directories, or for the sake of this exercise, we can also create our own directory, for example:
 
 ```shell
-cd Downloads
+mkdir Directory
 ```
 
-Of course, please replace `Downloads` above which whatever other directory you have or prefer. Now, when you type in these commands:
+Now you can do:
+
+```shell
+cd Directory
+```
+
+Of course, please replace `Directory` above which whatever other directory you have or prefer. Now, when you type in these commands:
 
 ```shell
 pwd
@@ -155,14 +165,45 @@ cat just_a_sample_file.txt
 
 If you only see "Hello world!" once now, that's what you expected, because that `>` is just a "redirection operator" in overwrite mode, it will get rid of whatever was in that file before writing the new stuff. As you might have guessed, this can have destructive effects, so you might want to use it with care, especially if that target file contained a very long novel you had just typed.
 
-A good practice when dealing with files in general is not leaving some garbage behind, so let's get rid of that sample file we've just created:
+Now let's see how we can rename that file:
 
 ```shell
-rm just_a_sample_file.txt
+mv just_a_sample_file.txt another_sample_file.txt
 ls
 ```
 
-You'll notice "just_a_sample_file.txt" is no longer part of the current directory's contents. Bye bye! But please, don't get trigger happy now and don't start deleting every file around, as you might lose some important data and dearly regret it later.
+You might have noticed that file now has a different name. And how can we move it around?
+
+```shell
+mv another_sample_file.txt Directory
+ls
+ls Directory
+```
+
+As you might have guessed, the file is now in that new Directory we created before. Let's move it back:
+
+```shell
+mv Directory/another_sample_file.txt .
+ls Directory
+ls
+```
+
+That was a lot of fun. Always pay attention when moving files around, as you don't want to move them somewhere you can't remember later. And as you probably guessed, you can also move directories with `mv` too.
+
+A good practice when dealing with files and directories in general is not leaving some garbage behind, so let's get rid of that sample file we've just created:
+
+```shell
+rm another_sample_file.txt
+ls
+```
+
+You'll notice "another_sample_file.txt" is no longer part of the current directory's contents. Bye bye! We can also get rid of that sample directory we created just to play around:
+
+```shell
+rmdir Directory
+```
+
+Just please, don't get trigger happy now and don't start deleting every file around, as you might lose some important data and dearly regret it later.
 
 (to be continued)
 
