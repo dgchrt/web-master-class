@@ -20,9 +20,9 @@ Important: this document makes no assumptions about what kind of computer system
 ## Terminal
 In the beginning, there was just the terminal. Actually, in the real beginning not even that, but we live in privileged times and we can fast forward to taking it for granted. Fancy graphical desktop environments came much later, but they never replaced the terminal. And you're about to learn why. Picture this: the desktop environment is to the terminal pretty much what early sketching inside caves is to modern written language. If you want to convey advanced instructions, pointing at icons becomes very limiting, very quickly.
 
-The day of any decent software engineer begins and ends in the terminal. Go ahead, open your "Terminal" application, unless you are already in it. Let's cover some basics now.
+The day of any decent software engineer usually begins and ends in the terminal, so you might as well get used to it sooner than later. Go ahead, open your "Terminal" application, unless you are already in it. The terminal is your biggest friend now, keep it around the corner at all times. Let's cover some basics of how to actually use it.
 
-### How to interact with it
+### How to interact with your terminal
 Here's the deal: from now on, whenever you see a block like this:
 
 ```shell
@@ -50,7 +50,24 @@ Now that you know how to list the contents of the working directory, you might w
 ls -l
 ```
 
-You should see a list of contents, but with some extra information.
+You should see a list of contents, but with some extra information. By the way, you might have just noticed that `ls -l` is just `ls` again, with an additional flag, `-l` in this case. You might wonder how many of these `ls` might have, and I'm glad you do. How can you learn more about them? So here's another very important command for you:
+
+```shell
+man ls
+```
+
+Nice, you've just found the manual for `ls`. You can usually exit that by typing `q` (for "quit"). Go on, try checking the manual for the previous commands we used before:
+
+```shell
+man pwd
+man whoami
+```
+
+And in case you are wondering, you probably guessed it right, you can read the manual for `man` itself as well:
+
+```shell
+man man
+```
 
 (to be continued)
 
