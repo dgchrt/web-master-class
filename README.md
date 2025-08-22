@@ -10,6 +10,8 @@ This master class will teach you how to become proficient as a web developer, wi
   - [Navigating directories](#navigating-directories)
     - [A small intermission about manual pages](#a-small-intermission-about-manual-pages)
   - [Playing around with files](#playing-around-with-files)
+  - [Environment variables](#environment-variables)
+    - [What is a variable anyway?](#what-is-a-variable-anyway)
 - [Text Editor](#text-editor)
 - [Version Control System](#version-control-system)
 - [Programming](#programming)
@@ -24,7 +26,7 @@ Important: this document makes no assumptions about what kind of computer system
 ## Terminal
 In the beginning, there was just the terminal. Actually, in the real beginning not even that, but we live in privileged times and we can fast forward to taking it for granted. Fancy graphical desktop environments came much later, but they never replaced the terminal. And you're about to learn why. Picture this: the desktop environment is to the terminal pretty much what early sketching inside caves is to modern written language. If you want to convey advanced instructions, pointing at icons becomes very limiting, very quickly.
 
-The day of any decent software engineer usually begins and ends in the terminal, so you might as well get used to it sooner than later. Go ahead, open your "Terminal" application, unless you are already in it. The terminal is your biggest friend now, keep it around the corner at all times. Let's cover some basics of how to actually use it.
+The day of any decent software engineer usually begins and ends in the terminal, so you might as well get used to it sooner than later. Go ahead, open your "Terminal" application, unless you are already in it. The terminal is your biggest friend now, keep it around the corner at all times. As soon as you open it, you might see some text already there and a cursor. That's provided by a program that handles your interaction with the terminal and is usually known as your "shell". Let's cover some basics of how to actually use it.
 
 ### How to interact with your terminal
 Here's the deal: from now on, whenever you see a block like this:
@@ -52,6 +54,20 @@ echo 'Hello!'
 ```
 
 I'll let you guess what this one does. You see? Typing in the terminal is quite analog to having a chat with your computer. Except instead of using some wild natural language, you're using a formal language, which is unambiguous.
+
+One more important command before we move forward:
+
+```shell
+exit
+```
+
+As you can imagine, that one ends your current shell session. It's always a good idea to formally end your terminal session like this, because it gives your shell a chance to save any pending information such as your history, etc. Talking about that, please open your terminal again and try this:
+
+```shell
+history
+```
+
+You should see a list of the latest commands you've typed into your terminal. That's your history for you.
 
 ### Navigating directories
 Now that you know how to list the contents of the working directory, you might want to change to another directory. Can you tell which among those contents are also directories or just some plain files? Let's try this:
@@ -204,6 +220,21 @@ rmdir Directory
 ```
 
 Just please, don't get trigger happy now and don't start deleting every file around, as you might lose some important data and dearly regret it later.
+
+### Environment variables
+
+Another important concept while learning to use the terminal is understanding environment variables. They can directly or indirectly affect the outcome of your commands and programs, so it's best to know how they work.
+
+#### What is a variable, anyway?
+
+So before we dig into environment variables, let's learn what is a variable first. I was planning to introduce this in the [Programming](#programming) chapter below, but let's break the ice right now. A variable is simply a labeled space in the computer memory that stores some information. Let's create a variable to see that in action:
+
+```shell
+MY_FIRST_VARIABLE='Wow, this is so cool!'
+echo $MY_FIRST_VARIABLE
+```
+
+See? You've just created a variable, stored some text inside it, then displayed its contents afterwards. That's a local variable, and it only lives within the scope of your current shell.
 
 (to be continued)
 
