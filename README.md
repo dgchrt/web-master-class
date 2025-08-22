@@ -35,7 +35,7 @@ Here's the deal: from now on, whenever you see a block like this:
 ls
 ```
 
-You will just type it in the terminal, exactly how it's written, line by line, hitting "Enter" at the end of each line. Deal? Then look at what that `ls` command you just typed produced. You should see a list of the contents in the working directory (also known as current folder). And what would such "working directory" be, you might ask? Luckily, there's another command to answer that:
+You will just type it in the terminal, exactly how it's written, line by line, hitting "Enter" at the end of each line. You might feel tempted to just copy and paste everything but I urge you not to do that, because typing is important for building muscle memory. And you want that because these commands will become your trusty companions for as long as you keep using computers. Deal? Then look at what that `ls` command you just typed produced. You should see a list of the contents in the working directory (also known as current folder). And what would such "working directory" be, you might ask? Luckily, there's another command to answer that:
 
 ```shell
 pwd
