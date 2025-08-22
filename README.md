@@ -12,6 +12,7 @@ This master class will teach you how to become proficient as a web developer, wi
   - [Playing around with files](#playing-around-with-files)
   - [Environment variables](#environment-variables)
     - [What is a variable anyway?](#what-is-a-variable-anyway)
+  - [Chaining commands](#chaining-commands)
 - [Text Editor](#text-editor)
 - [Version Control System](#version-control-system)
 - [Programming](#programming)
@@ -234,9 +235,57 @@ MY_FIRST_VARIABLE='Wow, this is so cool!'
 echo $MY_FIRST_VARIABLE
 ```
 
-See? You've just created a variable, stored some text inside it, then displayed its contents afterwards. That's a local variable, and it only lives within the scope of your current shell.
+See? You've just created a variable, stored some text inside it, then displayed its contents afterwards. That's a local variable, and it only lives within the scope of your current shell. If you `exit` your shell and open a new terminal, this variable won't be there anymore. Also if you open another terminal, it won't be there, too. You can try it out and see for yourself.
+
+---
+
+Coming back to environment variables, here are a couple important ones:
+
+```shell
+echo $PATH
+echo $SHELL
+```
+
+The first one is the "path" for your shell. So that when you type a command, e.g. `cat` (which is a program, by the way), your shell needs to know where to look for it (since it's not in your current directory). For that purpose, it resorts to the path, and it might find it somewhere along those directories you can see listed in the contents of the `PATH` variable.
+
+The second one is your shell interpreter itself. Some common ones are `bash`, `sh`, and `zsh`. There are others of course, but an extensive list of all known shell programs is beyond the scope of this chapter. It can be useful to know what kind of shell you are using though, as they might have different features which you might be interested into.
+
+Environment variables are special because they are exported to child processes (programs). Let's try this out:
+
+```shell
+MY_VARIABLE='Not for export!'
+sh
+echo $MY_VARIABLE
+exit
+export MY_VARIABLE='Too good for domestic!'
+sh
+echo $MY_VARIABLE
+exit
+```
+
+You might have noticed that the first local variable wasn't accessible in the child shell program, while the second, thanks to the `export` keyword, was. In effect, the exported one is now an environment variable.
+
+So if I tell you that your current shell is also a child of some other process, you might wonder how many exported variables are part of its environment. Fortunately there's a better way than trying to guess their names:
+
+```shell
+env
+```
+
+You might be surprised with the amount of environment variables you will see in a modern system. And by the way, your exported `MY_VARIABLE` should be among them, too.
+
+This is the explicit way of declaring environment variables. There's also an implicit way, which is often used but seldom talked about:
+
+```shell
+MY_VARIABLE='Just for you!' sh
+echo $MY_VARIABLE
+exit
+```
+
+As you can see, the variable was accessible from within the child shell, even though you didn't explicitly export it from the parent shell, but since you declared it just before issuing the command, it became part of its environment. That's called an implicit export.
 
 (to be continued)
+
+### Chaining commands
 
 ## Text Editor
 
