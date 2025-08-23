@@ -101,6 +101,8 @@ And in case you are wondering, you probably guessed it right, you can read the m
 man man
 ```
 
+---
+
 Coming back to what we were doing, now you can try changing your working directory to one of those directories that were listed before (the ones with a "d" file mode). In case you don't have any directories, or for the sake of this exercise, we can also create our own directory, for example:
 
 ```shell
@@ -283,9 +285,72 @@ exit
 
 As you can see, the variable was accessible from within the child shell, even though you didn't explicitly export it from the parent shell, but since you declared it just before issuing the command, it became part of its environment. That's called an implicit export.
 
-(to be continued)
+Why are environment variables important, anyway? They can be used for many purposes, commonly applied to environment configuration. Many behaviors and settings can be adjusted simply by setting some different values to environment variables.
 
 ### Chaining commands
+
+Picture this: you're in charge of managing the flow in a laundry. The flow goes from the washer, through the dryer and folding to the closet. There's a person taking care of each of these activities, but it is your job to carry the items between each of them once every step is done. It's a lot of work, isn't it? Now imagine you had a conveyor belt connecting all of these stations. As soon as the work is done in the first station, it is automatically carried over to the next, and so forth. Your job would become much easier, wouldn't it?
+
+Luckily in the terminal you can chain commands, turning the output of one command into the input of the next one. Let's have a look at the operators that allow us to do that.
+
+#### Pipes
+
+Suppose you'd like to know how many processes you are running right now under your own user account. How many, do you guess? You main count your browser, some email client, a couple terminals... maybe you're also running a music player as you read this document. Do you think that's it? Let's find out, shall we? First, let's list them:
+
+```shell
+ps aux
+```
+
+You might be surprised with the size of that list, and also how many of those entries have your username on them. I bet you couldn't even see the whole list because it scrolled up. Let me help you with that:
+
+```shell
+ps aux | more
+```
+
+Now you can see the first complete page, before moving forward to the next page. One thing you might have noticed here is that the first line contains headers, with "USER" being the first column. Now you can hit "Enter" to proceed line by line or "space" to proceed page by page. If you ever get bored, you can also hit `q` to quit. That's the convenience the `more` program is bringing to you. How does that work? Well, the `ps` command has long completed its task, which was listing the processes, and then it handed that output over to `more`, which took over and is paginating it for you. Neat, isn't it? I bet you will also like this other program:
+
+```shell
+ps aux | less
+```
+
+That's yet another pager, and these days many people prefer `less` over `more`. Maybe it's because "less is more". One of its advantages, being that you can also navigate backwards (`more` only goes forward).
+
+It will be still quite tedious counting all of those lines that contain your username one by one. Maybe if at least you'd see a list with just the entries you care about?
+
+```shell
+ps aux | grep $(whoami) | less
+```
+
+That's better, isn't it? Now you should see only the entries with your username on them. By the way, you might have noticed a few things there. The most obvious is that now you probably realized you can pipe the output of one command over to the next one indefinitely. Another thing is the `grep` command over there, quite useful that one. Make sure you visit its `man` page very soon. And last but not least, there's the `$()` operator wrapping the `whoami` command. What does that do? That's a command substitution. It executes whatever is inside first, `whoami` in this case, returning its value in place, so that it can be used as the argument for `grep`. Cool, isn't it?
+
+Alright, this is making it easier and easier for you to count how many processes you are running at the moment. But computers are big calculators, aren't they? I'm sure they can "count" things for you. Let's try this:
+
+```shell
+ps aux | grep $(whoami) | wc -l
+```
+
+With that, the last program receiving the output from the previous one is `wc`, which can count words for you, in this case full lines, since we're using the `-l` flag. I hope that by now I don't have to suggest that you have a look at its `man` page when you get a chance. And I think now you have a good grasp at how many processes you are running yourself.
+
+#### And
+
+Now, suppose you want to chain tasks, but only if the previous task is successful. Let's try this:
+
+```shell
+cat some_file_that_does_not_exist.txt && echo 'I found the file!'
+```
+
+You should notice two things: first is some error message from `cat` stating that it did not find such file, and second, your `echo` command never printed the "I found the file!" message, because it was never executed, thanks to the `&&` (and) operator connecting them. Let's give it another try:
+
+```shell
+touch some_file_that_now_exists.txt
+cat some_file_that_now_exists.txt && echo 'Now I actually found the file!'
+```
+
+That looks nicer, doesn't it? First, you shouldn't have seen any error message from `cat` this time, and now your `echo` command should have executed, displaying the friendly message you just typed there. By the way, you might want to get rid of that sample file with `rm`, since you already know how to use it.
+
+#### Or
+
+(to be continued)
 
 ## Text Editor
 
