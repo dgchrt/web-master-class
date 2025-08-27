@@ -350,9 +350,61 @@ That looks nicer, doesn't it? First, you shouldn't have seen any error message f
 
 #### Or
 
-(to be continued)
+What if you want the computer to try doing something, or something else, in case the first thing fails? That's what the `||` (or) operator is for. Let's see that in practice:
+
+```shell
+cat some_file_that_does_not_exist.txt || echo 'I could not find such file!'
+```
+
+That `cat` should fail, displaying its own error message, but your `echo` will also execute. Let's try something different now:
+
+```shell
+echo 'This will succeed!' || echo 'The previous command failed!'
+```
+
+As you can see, the first `echo` did indeed succeed, while the second `echo` was never executed, because of precisely that.
+
+#### Combining everything
+
+Now that we know these operators, we can combine them all together for more complex tasks. Let's see if you can make your computer find the needle in the haystack:
+
+```shell
+touch haystack.txt
+(cat haystack.txt | grep 'needle') && echo 'I found it!' || echo 'I could not find it!'
+echo 'needle' >> haystack.txt
+(cat haystack.txt | grep 'needle') && echo 'I found it!' || echo 'I could not find it!'
+```
+
+That was fun, wasn't it? Maybe you noticed the parentheses there, they were added to tell the computer that `cat haystack.txt | grep 'needle'` is the expression you want to be evaluated by the following logical operators. You can also get rid of that new `haystack.txt` file with `rm` now.
 
 ## Text Editor
+
+Now that we know how to navigate directories and manage some files, let's have a look at how we can edit those files. There must be a more convenient way to write text to files than `echo` into files with an append redirection operator, right?
+
+While there are many popular text editors available, there's one in particular that is at the same time quite powerful and pretty much ubiquitous. That's VI. If you ever log into a terminal, be it an IBM AS/400 from the 80s, or a modern GNU/Linux operating system you've just freshly installed, I'm quite sure VI will be there. And that's great.
+
+So let's get started with some VI basics:
+
+```shell
+vi some_new_file.txt
+```
+
+That command should open VI, editing a brand new file. What you see next is VI's user interface. VI is sophisticated and has different modes of operation. As soon as you start VI, it will be in "command" mode. That means whatever you type is supposed to be a command. We'll dive into that soon enough.
+
+What we want to do now is enter another mode, called "input" mode. For that, we'll type `i` (for input). Once you do that, you can type whatever you want, e.g. `Hello!`. If you make any mistakes while typing, you can hit Backspace as much as you need and try it again.
+
+Once you're happy with what you've typed, hit ESC (also known as the Escape key, usually in the top left corner of your keyboard) to go back to "command" mode. Back in "command" mode, type `:x` and hit Enter. You should have now left VI's interface and be back in your usual terminal prompt.
+
+Now, if you do:
+
+```shell
+ls
+cat some_new_file.txt
+```
+
+You'll see the new file is there when you list the directory's contents and also the file's own contents when you display it with `cat`. That was easy, wasn't it? But that's not all there is to it when it comes to VI. It has many other features that we'll explore together.
+
+(to be continued)
 
 ## Version Control System
 
