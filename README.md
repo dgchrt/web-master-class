@@ -1,9 +1,9 @@
 # web-master-class
-Web Master Class
 
 This master class will teach you how to become proficient as a web developer, with the necessary disciplines that you need to understand along the way, so that you become a master yourself. To achieve this particular goal, there will be no hand holding: you'll be given some essential pointers, but it is your job to seek the knowledge yourself.
 
 ## Contents
+
 - [Introduction](#introduction)
 - [Terminal](#terminal)
   - [How to interact with your terminal](#how-to-interact-with-your-terminal)
@@ -17,23 +17,27 @@ This master class will teach you how to become proficient as a web developer, wi
     - [And](#and)
     - [Or](#or)
     - [Combining everything](#combining-everything)
-- [Text Editor](#text-editor)
-- [Version Control System](#version-control-system)
+- [Text editor](#text-editor)
+- [Version control system](#version-control-system)
 - [Programming](#programming)
-- [Web Framework](#web-framework)
-- [Dynamic Pages](#dynamic-pages)
+- [Web framework](#web-framework)
+- [Dynamic pages](#dynamic-pages)
+- [To be included]
 
 ## Introduction
+
 Welcome to this master class. I'm glad that you are here. By the end of this journey, you should have a good grasp of what it means to be a software engineer, or at least a competent web developer. Ok, in the very least, I wish you to become a self-sufficient power user. There are no prerequisites and knowledge seekers of all levels are welcome to learn a thing or two from this material.
 
 Important: this document makes no assumptions about what kind of computer system you are using. Since you're here, you're most likely using some [POSIX](https://posix.opengroup.org/)-compliant system, but it doesn't have to be. In any case, it's also your job to make sure the essential tools we're covering in this class do run properly in your own computer system. No hand holding, remember? So if you ever stumble upon something that doesn't work as expected, I'm pretty sure you can use [a decent search engine](https://www.ecosia.org/) and search for some instructions on how to install and make such thing work on your own system of choice. You did choose your current system, didn't you?
 
 ## Terminal
+
 In the beginning, there was just the terminal. Actually, in the real beginning not even that, but we live in privileged times and we can fast forward to taking it for granted. Fancy graphical desktop environments came much later, but they never replaced the terminal. And you're about to learn why. Picture this: the desktop environment is to the terminal pretty much what early sketching inside caves is to modern written language. If you want to convey advanced instructions, pointing at icons becomes very limiting, very quickly.
 
 The day of any decent software engineer usually begins and ends in the terminal, so you might as well get used to it sooner than later. Go ahead, open your "Terminal" application, unless you are already in it. The terminal is your biggest friend now, keep it around the corner at all times. As soon as you open it, you might see some text already there and a cursor. That's provided by a program that handles your interaction with the terminal and is usually known as your "shell". Let's cover some basics of how to actually use it.
 
 ### How to interact with your terminal
+
 Here's the deal: from now on, whenever you see a block like this:
 
 ```shell
@@ -75,6 +79,7 @@ history
 You should see a list of the latest commands you've typed into your terminal. That's your history for you.
 
 ### Navigating directories
+
 Now that you know how to list the contents of the working directory, you might want to change to another directory. Can you tell which among those contents are also directories or just some plain files? Let's try this:
 
 ```shell
@@ -263,13 +268,18 @@ MY_VARIABLE='Not for export!'
 sh
 echo $MY_VARIABLE
 exit
+```
+
+You'll notice that when you `echo` there will be no output. Why? Because the variable you created in your parent shell was never exported to the child shell (created when you issue `sh`). So how can we overcome that? Let's see in the next sequence of commands:
+
+```shell
 export MY_VARIABLE='Too good for domestic!'
 sh
 echo $MY_VARIABLE
 exit
 ```
 
-You might have noticed that the first local variable wasn't accessible in the child shell program, while the second, thanks to the `export` keyword, was. In effect, the exported one is now an environment variable.
+Thanks to the `export` keyword, the variable was now successfully accessed from the child shell. In effect, the exported one is now an environment variable.
 
 So if I tell you that your current shell is also a child of some other process, you might wonder how many exported variables are part of its environment. Fortunately there's a better way than trying to guess their names:
 
@@ -381,11 +391,11 @@ echo 'needle' >> haystack.txt
 
 That was fun, wasn't it? Maybe you noticed the parentheses there, they were added to tell the computer that `cat haystack.txt | grep 'needle'` is the expression you want to be evaluated by the following logical operators. You can also get rid of that new `haystack.txt` file with `rm` now.
 
-## Text Editor
+## Text editor
 
 Now that we know how to navigate directories and manage some files, let's have a look at how we can edit those files. There must be a more convenient way to write text to files than `echo` into files with an append redirection operator, right?
 
-While there are many popular text editors available, there's one in particular that is at the same time quite powerful and pretty much ubiquitous. That's VI. If you ever log into a terminal, be it an IBM AS/400 from the 80s, or a modern GNU/Linux operating system you've just freshly installed, I'm quite sure VI will be there. And that's great.
+While there are many popular Text editors available, there's one in particular that is at the same time quite powerful and pretty much ubiquitous. That's VI. If you ever log into a terminal, be it an IBM AS/400 from the 80s, or a modern GNU/Linux operating system you've just freshly installed, I'm quite sure VI will be there. And that's great.
 
 So let's get started with some VI basics:
 
@@ -410,10 +420,18 @@ You'll see the new file is there when you list the directory's contents and also
 
 (to be continued)
 
-## Version Control System
+## Version control system
 
 ## Programming
 
-## Web Framework
+## Web framework
 
-## Dynamic Pages
+## Dynamic pages
+
+## To be included
+
+This chapter is about everything that should be included in the above pages. It can be used to improve future versions of this master class, but it can also be useful to you, reading this very version right now, hinting about other topics you should learn. Remember, you yourself own your own journey towards knowledge.
+
+- Terminal
+  - Wildcards (*, ?) and other expressions that can be used with file names
+  - Iterators (for loops)
