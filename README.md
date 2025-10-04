@@ -418,6 +418,63 @@ cat some_new_file.txt
 
 You'll see the new file is there when you list the directory's contents and also the file's own contents when you display it with `cat`. That was easy, wasn't it? But that's not all there is to it when it comes to VI. It has many other features that we'll explore together.
 
+Open that file again. If you hit the up arrow in your keyboard a few times, you'll come back to the `vi some_new_file.txt` command. Then you just hit Enter to run it again. That's the convenience of keeping a `history`, as seen before. Make sure you type some lines of text now, anything goes. Make sure you have at least some five lines of text there. They don't have to be long. Also make sure you have the word "tofu" somewhere. You know how to do it, right? Enter the input mode with `i` and start typing. Hit Enter whenever you want to add a new line.
+
+Now that you have typed some 5+ lines of text with the word "tofu" somewhere, let's learn a few more Vi commands. Hit ESC on your keyboard to go back to command mode, if you haven't already.
+
+Suppose you want to go to a specific line of your text. You can do that with the command:
+
+```shell
+:5
+```
+
+That should take you to the beginning of line 5. Should you want to go to another line, you'd replace that `5` with some other number. If you go overboard, Vi will also tell you that such line doesn't exist. Now that you know that, go back to the first line:
+
+```shell
+:1
+```
+
+What if you don't like that line? You can delete it with the `dd` command. That line should be now gone. It's a little sad, isn't it? Let's bring it back, with the undo command:
+
+```shell
+:u
+```
+
+There you go, the line you just deleted should have been brought back. But then you look at it again and you really don't like it. Actually, you don't like any of those 5 first lines of text. Luckily, in Vi you can precede most commands with a number that will tell Vi how many times you want it to repeat that command. So let's get rid of those first 5 lines:
+
+```shell
+5dd
+```
+
+Five full lines of text should be now gone. But you actually really liked them, so let's bring them back one more time with the undo command you just learned. And now we'll duplicate those lines, with this command:
+
+```shell
+P
+```
+
+Wow, what happened there? Well, when you first deleted those lines, they were put in a buffer, think of `d` as a line cutter. So when you use the `P` (paste on top) command, whatever was in that buffer gets pasted into the text. Neat! Now what if you'd just like to copy and paste, without cutting first? We can also do that. Try this:
+
+```shell
+3yy
+p
+```
+
+That tells Vi to copy 3 lines with the `y` (yank) command, then paste on bottom with the `p` command. As you'll probably realize, pasting on bottom or top can be more or less convenient depending on what you are trying to do.
+
+What about that magic word we typed before, do you know where it is? Or even if you have it in multiple places now? Let's find out, with the help of the search command:
+
+```shell
+/tofu
+```
+
+I hope you found at least one, otherwise Vi will tell you that it cannot find it. But everything went well, you should probably have at least two of them now. How can you find the other one? With the "next" command that is:
+
+```shell
+n
+```
+
+You can keep hitting `n` until you find the one you're looking for, and Vi will loop back to the first one when you find the last one and hit `n` again. You can also move backwards, with the `N` command.
+
 (to be continued)
 
 ## Version control system
