@@ -475,11 +475,21 @@ n
 
 You can keep hitting `n` until you find the one you're looking for, and Vi will loop back to the first one when you find the last one and hit `n` again. You can also move backwards, with the `N` command.
 
-(to be continued)
+VI has many useful commands, but providing an exhaustive list here would be off-topic. The commands we've just covered should provide you with enough "survival skills", which is all you need most of the time. Just keep always in mind that if anything goes wrong, you can always hit ESC one or multiple times and then quit with `:q` without saving any changes to the current file you were editing.
+
+At this point, you should be able to "steer" your computer. The vehicle being your computer and the wheel your terminal. Since this master class is not about holding hands but instead setting you on your own way to becoming a master yourself, it's probably a good time to start giving pointers to other sources of information. The sooner you get used to seeking for knowledge on your own, the better. It's not always going to be easy, but it's definitely needed.
+
+So as a safe start, and if you really want to master VI, which is a great tool (in case you haven't noticed), I can only recommend keeping [the VI cheat sheet](https://web.mit.edu/merolish/Public/vi-ref.pdf) at hand.
 
 ## Version control system
 
+All of this editing and saving files sounds a bit dangerous, right? What if you change or delete some words and you regret that forever. Having back up copies is nice, but when we're talking about programming, it's even better to use a version control system (VCS). It's the right tool that will allow you to store, review, revert, merge and do many more when it comes to changes in your files.
+
+So when it comes to a VCS, we'll be exploring Git. Why? Because it's the go-to VCS tool of this era. And for a good primer on Git, I will refer you to [this guide](https://rogerdudler.github.io/git-guide/).
+
 ## Programming
+
+(to be continued)
 
 ## Web framework
 
