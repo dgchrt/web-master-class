@@ -497,7 +497,7 @@ So when it comes to a VCS, we'll be exploring Git. Why? Because it's the go-to V
 
 ## To be included
 
-This chapter is about everything that should be included in the above pages. It can be used to improve future versions of this master class, but it can also be useful to you, reading this very version right now, hinting about other topics you should learn. Remember, you yourself own your own journey towards knowledge.
+This chapter is about everything that should be included in the previous chapters. It can be used to improve future versions of this master class, but it can also be useful to you, reading this very version right now, hinting about other topics you should learn. Remember, you yourself own your own journey towards knowledge.
 
 - Terminal
   - Wildcards (*, ?) and other expressions that can be used with file names
